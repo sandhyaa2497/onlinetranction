@@ -8,9 +8,7 @@ public interface Productdao {
 	 
     public List<Productdetails> getAllProductdetails();
  
-    public void deleteproduct(Integer Productdetails);
- 
-    public Productdetails updateproduct(Productdetails prod);
+    public void deleteproduct(int Prodid);
  
     public Productdetails getproduct(int proid);
 

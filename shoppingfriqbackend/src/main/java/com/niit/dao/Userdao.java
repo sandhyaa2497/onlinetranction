@@ -10,9 +10,9 @@ public interface Userdao {
 	 
     public List<Userdetails> getAllUserdetatils();
  
-    public void deleteuser(Integer Userdetails);
+    public void deleteuser(int Userid);
  
-    public Userdetails updateuser(Userdetails ud);
+   
  
     public Userdetails getuser(int userid);
 

@@ -10,9 +10,9 @@ public interface Supplierdao {
 	 
     public List<Supplierdetails> getAllSupplierdetails();
  
-    public void deletesupplier(Integer Supplierdetails);
+    public void deletesupplier(int Supid);
  
-    public Supplierdetails updatesupplier(Supplierdetails sd);
+   
  
     public Supplierdetails getsupplier(int supid);
 

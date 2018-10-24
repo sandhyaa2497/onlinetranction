@@ -10,11 +10,11 @@ public interface Categorydao {
  
     public void addcategory(Categorydetails cd);
  
-    public List<Categorydetails> getAllcategorydetails();
+    public List<Categorydetails> getAllCategorydetails();
  
-    public void deletecategory(Integer categorydetails);
+    public void deletecategory(int cid);
  
-    public Categorydetails updatecategory(Categorydetails cd);
+    
  
     public Categorydetails getcategory(int cid);
 
