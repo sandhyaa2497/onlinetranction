@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Productdetails;
 import com.niit.model.Supplierdetails;
 import com.niit.model.Userdetails;
 
 @Repository
+@Transactional
 public class Supplierdaoimpl implements Supplierdao {
 	@Autowired
     private SessionFactory sessionFactory;

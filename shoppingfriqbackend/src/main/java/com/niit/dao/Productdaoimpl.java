@@ -5,11 +5,13 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Categorydetails;
 import com.niit.model.Productdetails;
 
 @Repository
+@Transactional
 public class Productdaoimpl implements Productdao{
 	@Autowired
     private SessionFactory sessionFactory;

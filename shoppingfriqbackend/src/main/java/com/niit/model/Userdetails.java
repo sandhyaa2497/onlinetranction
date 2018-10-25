@@ -1,21 +1,36 @@
 package com.niit.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity 
+@Component
+@Table(name="Usertable")
 public class Userdetails {
-	private int userid;
+	
 	private String username;
+	@Id
 	private String email;
-	private int userage;
+	private String phno;
+	private String password;
 	private String address;
-	private int phno;
-	public int getUserid() {
-		return userid;
+	
+	public String getPhno() {
+		return phno;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setPhno(String phno) {
+		this.phno = phno;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -28,22 +43,11 @@ public class Userdetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getUserage() {
-		return userage;
-	}
-	public void setUserage(int userage) {
-		this.userage = userage;
-	}
+	
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public int getPhno() {
-		return phno;
-	}
-	public void setPhno(int phno) {
-		this.phno = phno;
 	}
 }

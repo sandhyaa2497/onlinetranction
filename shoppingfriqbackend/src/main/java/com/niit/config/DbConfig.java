@@ -20,7 +20,7 @@ import com.niit.model.Supplierdetails;
 import com.niit.model.Userdetails;
 
 @Configuration
-@ComponentScan("com.niit.model")
+@ComponentScan("com.niit")
 @EnableTransactionManagement
 public class DbConfig {
 	
@@ -33,35 +33,38 @@ public class DbConfig {
 	    dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
 	    dataSource.setUsername("sa");
 	    dataSource.setPassword("");
-	 
+	 System.out.println("Connecting to H2");
 	    return dataSource;
 	}
+	public  Properties getHibernateProperties() {
+	    Properties properties = new Properties();
+	    properties.put("hibernate.show_sql", "true");
+	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+	    properties.put("hibernate.hbm2ddl.auto","create");
+	    System.out.println("hibernate prop initiated");
+	    return properties;
+	}
+	
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 	 
 	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-	 
+	    sessionBuilder.addProperties(getHibernateProperties());
 	    sessionBuilder.addAnnotatedClasses(Categorydetails.class);
 	    sessionBuilder.addAnnotatedClasses(Productdetails.class);
 	    sessionBuilder.addAnnotatedClasses(Supplierdetails.class);
 	    sessionBuilder.addAnnotatedClasses(Userdetails.class);
-	 
+	   System.out.println("session created");
 	    return sessionBuilder.buildSessionFactory();
 	}
-	private Properties getHibernateProperties() {
-	    Properties properties = new Properties();
-	    properties.put("hibernate.show_sql", "true");
-	    properties.put("hibernate.dialect", "rg.hibernate.dialect.H2Dialect");
-	    return properties;
-	}
+	
+	
 	@Autowired
 	@Bean(name = "transactionManager")
-	public HibernateTransactionManager getTransactionManager(
-	        SessionFactory sessionFactory) {
-	    HibernateTransactionManager transactionManager = new HibernateTransactionManager(
-	            sessionFactory);
-	 
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+	    HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+	 System.out.println("transaction started");
 	    return transactionManager;
 	}
 }
