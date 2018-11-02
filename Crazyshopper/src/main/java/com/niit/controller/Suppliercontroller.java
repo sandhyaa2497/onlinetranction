@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.dao.Productdao;
+
 import com.niit.dao.Supplierdao;
 import com.niit.model.Supplierdetails;
 

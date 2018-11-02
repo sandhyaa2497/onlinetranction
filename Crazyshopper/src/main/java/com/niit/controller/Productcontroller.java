@@ -1,6 +1,12 @@
 package com.niit.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +14,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.dao.Categorydao;
+
 import com.niit.dao.Productdao;
 import com.niit.model.Productdetails;
 @Controller
@@ -23,11 +30,30 @@ public class Productcontroller {
 	      return new ModelAndView("Productf", "command", new Productdetails());
 	   }
 	   @RequestMapping(value = "/addproduct", method = RequestMethod.POST)
-	      public String addproduct(@ModelAttribute("SpringWeb")Productdetails product,ModelMap model) {
+	      public String addproduct(@ModelAttribute("SpringWeb")Productdetails product,ModelMap model,HttpServletRequest request) {
 	      model.addAttribute("prodname", product.getProdname());
 	     
 	      model.addAttribute("prodid", product.getProdid());
 	      productDao.addproduct(product);
+	      
+	      MultipartFile img=product.getImage();
+	  	System.out.println(request.getServletContext().getRealPath("/"));
+	  	
+	  	
+	  	Path path=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+product.getProdid()+".jpg");
+	  	
+	  	try {
+	  		if(img!=null && !img.isEmpty()){
+	  		File file=new File(path.toString());
+	  		img.transferTo(file);
+	  		}
+	  	} catch (IllegalStateException e) {
+	  		e.printStackTrace();
+	  	} catch (IOException e) {
+	  		e.printStackTrace();
+	  	}
+	      
+	      
 	      return "Productdisplay";
 	   }
 	   @RequestMapping(value = "/getproduct", method = RequestMethod.GET)

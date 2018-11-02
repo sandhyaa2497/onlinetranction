@@ -24,5 +24,7 @@ ${cid}
 <td>${j.cid}</td>
 </tr>
 </c:forEach>
+</table>
+
 </body>
 </html>

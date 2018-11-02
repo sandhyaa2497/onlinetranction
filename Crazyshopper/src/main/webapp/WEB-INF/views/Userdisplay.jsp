@@ -32,5 +32,6 @@ ${email}
 <td>${j.address}</td>
 </tr>
 </c:forEach>
+</table>
 </body>
 </html>

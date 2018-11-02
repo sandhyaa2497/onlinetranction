@@ -25,6 +25,6 @@ ${supid}
 <td>${j.supid}</td>
 </tr>
 </c:forEach>
-
+</table>
 </body>
 </html>

@@ -10,7 +10,7 @@
 
    <body>
       <h2>PRODUCT DETAILS</h2>
-      <form:form method = "POST" action = "addproduct">
+      <form:form method = "POST" action = "addproduct"  enctype="multipart/form-data">
          <table>
             <tr>
                <td><form:label path = "prodname">Name</form:label></td>
@@ -32,6 +32,11 @@
                <td><form:label path = "quantity">Quantity</form:label></td>
                <td><form:input path = "quantity" /></td>
             </tr>
+            <tr>
+		<td>Upload an image</td>
+		<td><form:input type="file" path="image" ></form:input></td>
+		</tr>
+            
             <tr>
                <td colspan = "2">
                   <input type = "submit" value = "Submit"/>
