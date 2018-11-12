@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 Supplier Details
@@ -26,8 +29,8 @@ ${supid}
 <td>${j.supname}</td>
 <td>${j.supid}</td>
 <td>
-<a href="<c:url value='/admin/deletesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/admin/getupdatesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="<c:url value='/deletesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/getupdatesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 </tr>
 </c:forEach>

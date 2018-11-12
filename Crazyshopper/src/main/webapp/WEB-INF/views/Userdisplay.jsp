@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 User Details \
@@ -33,8 +36,8 @@ ${email}
 <td>${j.password}</td>
 <td>${j.address}</td>
 <td>
-<a href="<c:url value='/admin/deleteuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/admin/getupdateuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="<c:url value='/deleteuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/getupdateuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 </tr>
 </c:forEach>

@@ -42,7 +42,7 @@ public class Productcontroller {
 		List<Productdetails> plist=productDao.getAllProductdetails();
 		model.addAttribute("prodlist",plist);
 		
-		return "productdisplay";
+		return "Productdisplay";
 	}
 	   @RequestMapping(value = "/addproduct", method = RequestMethod.POST)
 	      public String addproduct(@Valid @ModelAttribute("product")Productdetails product,BindingResult result,ModelMap model,HttpServletRequest request) {
@@ -84,17 +84,52 @@ public class Productcontroller {
 			  
 		  }
 	   @RequestMapping(value="/deleteproduct")
-	   public String deleteProduct(@RequestParam int id){
+	   public String deleteProduct(@RequestParam int id,Model model){
 	   	productDao.deleteproduct(id);
+	   	List<Productdetails> plist=productDao.getAllProductdetails();
+		model.addAttribute("prodlist",plist);
 	   	return "Productdisplay";
 	   	
 }
-	   @RequestMapping(value="/getupdateproductform")
-	   public String getUpdateProductForm(@RequestParam int prodid,Model model){
-	   	Productdetails product=productDao.getproduct(prodid);
+	   @RequestMapping(value="/getupdateproduct")
+	   public String getUpdateProductForm(@RequestParam int id,Model model){
+	   	Productdetails product=productDao.getproduct(id);
+	   	System.out.println(product.getProdname());
 	   	model.addAttribute("product",product);
 	   	List<Categorydetails> categories=productDao.getAllCategorydetails();
 	   	model.addAttribute("categories",categories);
 	   	return "updateproductform";
+	   }
+	   @RequestMapping(value="/updateproduct")
+	   public String updateProduct(@Valid @ModelAttribute("product") Productdetails product,BindingResult result,Model model,HttpServletRequest request){
+	   	if(result.hasErrors()){
+	   		List<Categorydetails> categories=productDao.getAllCategorydetails();
+	   		model.addAttribute("categories",categories);
+	   		return "updateproductform";
+	   	}
+	   	productDao.updateProduct(product);
+	   	MultipartFile img=product.getImage();
+	   	System.out.println(request.getServletContext().getRealPath("/"));
+	   	
+	   
+	   	Path path=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+product.getProdid()+".jpg");
+	   	
+
+	   	
+	   	try {
+	   		if(img!=null && !img.isEmpty()){
+	   		File file=new File(path.toString());
+	   		img.transferTo(file);
+	   		}
+	   	} catch (IllegalStateException e) {
+	   		
+	   		e.printStackTrace();
+	   	} catch (IOException e) {
+	   		
+	   		e.printStackTrace();
+	   	}
+	   	List<Productdetails> plist=productDao.getAllProductdetails();
+		model.addAttribute("prodlist",plist);
+	   	return "Productdisplay";
 	   }
 }
