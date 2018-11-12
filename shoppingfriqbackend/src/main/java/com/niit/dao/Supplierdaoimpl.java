@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.model.Productdetails;
+
 import com.niit.model.Supplierdetails;
-import com.niit.model.Userdetails;
+
 
 @Repository
 @Transactional
@@ -37,7 +37,8 @@ public class Supplierdaoimpl implements Supplierdao {
         return (Supplierdetails) sessionFactory.getCurrentSession().get(
         		Supplierdetails.class, supid);
     }
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
 	public List<Supplierdetails> getAllSupplierdetails() {
 		 return sessionFactory.getCurrentSession().createQuery("from Supplierdetails").list();
 	}

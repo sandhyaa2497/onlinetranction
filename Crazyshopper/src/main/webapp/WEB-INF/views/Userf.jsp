@@ -14,22 +14,27 @@
             <tr>
                <td><form:label path = "username">Name</form:label></td>
                <td><form:input path = "username" /></td>
+               <form:errors path="username" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td><form:label path = "email">Email</form:label></td>
                <td><form:input path = "email" /></td>
+               <form:errors path="email" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td><form:label path = "phno">Phone Number</form:label></td>
                <td><form:input path = "phno" /></td>
+               <form:errors path="phno" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td><form:label path = "password">Password</form:label></td>
                <td><form:input path = "password" /></td>
+               <form:errors path="password" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td><form:label path = "address">Address</form:label></td>
                <td><form:input path = "address" /></td>
+               <form:errors path="address" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td colspan = "2">

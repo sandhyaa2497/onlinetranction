@@ -15,11 +15,12 @@
             <tr>
                <td><form:label path = "categoryname">Name</form:label></td>
                <td><form:input path = "categoryname" /></td>
+               <form:errors path="categoryname" cssStyle="color:red"></form:errors>
             </tr>
-            <tr>
+           <%--  <tr>
                <td><form:label path = "cid">Id</form:label></td>
                <td><form:input path = "cid" /></td>
-            </tr>
+            </tr> --%>
             
             <tr>
                <td colspan = "2">

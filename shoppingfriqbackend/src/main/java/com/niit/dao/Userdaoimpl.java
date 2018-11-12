@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.model.Supplierdetails;
+
 import com.niit.model.Userdetails;
 
 @Repository("userDao")
@@ -38,6 +38,7 @@ public class Userdaoimpl implements Userdao {
         		Userdetails.class, email);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Userdetails> getAllUserdetatils() {
 		 return sessionFactory.getCurrentSession().createQuery("from Userdetails").list();

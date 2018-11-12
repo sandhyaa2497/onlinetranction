@@ -21,6 +21,8 @@ ${email}
 <th>Email</th>
 <th>Password</th>
 <th>Address</th>
+<th>Action</th>
+
 </tr>
 
 <c:forEach var="j" items="${users}">
@@ -30,6 +32,10 @@ ${email}
 <td>${j.email}</td>
 <td>${j.password}</td>
 <td>${j.address}</td>
+<td>
+<a href="<c:url value='/admin/deleteuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/admin/getupdateuser?id=${j.email }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+					</td>
 </tr>
 </c:forEach>
 </table>

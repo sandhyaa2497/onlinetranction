@@ -17,12 +17,18 @@ ${supid}
 <tr>
 <th>Supplier Name</th>
 <th>Supplier Id</th>
+<th>Action</th>
+
 </tr>
 
 <c:forEach var="j" items="${suppliers}">
 <tr>
 <td>${j.supname}</td>
 <td>${j.supid}</td>
+<td>
+<a href="<c:url value='/admin/deletesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/admin/getupdatesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+					</td>
 </tr>
 </c:forEach>
 </table>

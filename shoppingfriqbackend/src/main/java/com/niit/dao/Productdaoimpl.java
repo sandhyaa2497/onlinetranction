@@ -2,6 +2,7 @@ package com.niit.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,10 @@ public class Productdaoimpl implements Productdao{
  
     }
  
-    
+    public void updateProduct(Productdetails product) {
+		Session session=sessionFactory.getCurrentSession();
+		session.update(product);
+	}
     
     public void deleteproduct(int prodid) {
     	Productdetails product = (Productdetails) sessionFactory.getCurrentSession().load(
@@ -36,11 +40,20 @@ public class Productdaoimpl implements Productdao{
         return (Productdetails) sessionFactory.getCurrentSession().get(
         		Productdetails.class, prodid);
     }
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Productdetails> getAllProductdetails() {
     	 
         return sessionFactory.getCurrentSession().createQuery("from Productdetails").list();
     }
- 
+
+
+
+    @SuppressWarnings("unchecked")
+   	@Override
+       public List<Categorydetails> getAllCategorydetails() {
+       	 
+           return sessionFactory.getCurrentSession().createQuery("from Categorydetails").list();
+       }
 
 }

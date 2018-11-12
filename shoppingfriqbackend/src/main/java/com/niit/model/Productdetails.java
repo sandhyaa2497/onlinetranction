@@ -1,9 +1,14 @@
 package com.niit.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,15 +16,29 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class Productdetails {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int prodid;
-	   private String prodname;
-	   private int prize;
-	   private String prodetails;
+	
+	   @NotEmpty(message="Productname is mandatory") private String prodname;
+	   @NotEmpty(message="productname is required") private String prodetails;
+	   @Min(value=0,message="Minimum quantity must be 0")
 	   private int quantity;
+	   private int prize;
 	   @Transient
 	   private MultipartFile image;
+	  
+	   @ManyToOne
+	   private Categorydetails category;
 	   
-	   public MultipartFile getImage() {
+	   
+	
+	public Categorydetails getCategory() {
+		return category;
+	}
+	public void setCategory(Categorydetails category) {
+		this.category = category;
+	}
+	public MultipartFile getImage() {
 		return image;
 	}
 	public void setImage(MultipartFile image) {
@@ -38,6 +57,8 @@ public class Productdetails {
 	public void setProdid(int prodid) {
 		this.prodid = prodid;
 	}
+	
+	
 	public String getProdname() {
 		return prodname;
 	}
