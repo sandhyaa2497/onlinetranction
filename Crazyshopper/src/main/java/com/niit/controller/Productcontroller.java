@@ -92,7 +92,7 @@ public class Productcontroller {
 	   	
 }
 	   @RequestMapping(value="/getupdateproduct")
-	   public String getUpdateProductForm(@RequestParam int id,Model model){
+	   public String getupdateproduct(@RequestParam int id,Model model){
 	   	Productdetails product=productDao.getproduct(id);
 	   	System.out.println(product.getProdname());
 	   	model.addAttribute("product",product);

@@ -4,11 +4,15 @@ import java.util.List;
 
 import com.niit.model.Categorydetails;
 
+
  
 public interface Categorydao {
 
  
     public void addcategory(Categorydetails cd);
+    
+    public void updateCategory(Categorydetails category);
+	 
  
     public List<Categorydetails> getAllCategorydetails();
  

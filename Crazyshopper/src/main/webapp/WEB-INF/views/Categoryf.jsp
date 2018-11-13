@@ -21,7 +21,10 @@
                <td><form:label path = "cid">Id</form:label></td>
                <td><form:input path = "cid" /></td>
             </tr> --%>
-            
+            <tr>
+		<td>Upload an image</td>
+		<td><form:input type="file" path="image" ></form:input></td>
+		</tr>
             <tr>
                <td colspan = "2">
                   <input type = "submit" value = "Submit"/>

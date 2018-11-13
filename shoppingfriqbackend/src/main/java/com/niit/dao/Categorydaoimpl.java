@@ -2,12 +2,14 @@ package com.niit.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.model.Categorydetails;
+
 
 @Repository
 @Transactional
@@ -19,11 +21,13 @@ public class Categorydaoimpl implements Categorydao {
         sessionFactory.getCurrentSession().saveOrUpdate(cd);
  
     }
- 
+    public void updateCategory(Categorydetails category) {
+		Session session=sessionFactory.getCurrentSession();
+		session.update(category);
+	}
     
-   
-   
-    public void deletecategory(int cid) {
+    
+ public void deletecategory(int cid) {
         Categorydetails category = (Categorydetails) sessionFactory.getCurrentSession().load(
                 Categorydetails.class, cid);
         if (null != category) {
@@ -42,5 +46,5 @@ public class Categorydaoimpl implements Categorydao {
     	 
         return sessionFactory.getCurrentSession().createQuery("from Categorydetails").list();
     }
-
+	
 }

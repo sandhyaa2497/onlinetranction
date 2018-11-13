@@ -2,6 +2,7 @@ package com.niit.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,6 +42,17 @@ public class Supplierdaoimpl implements Supplierdao {
 	@Override
 	public List<Supplierdetails> getAllSupplierdetails() {
 		 return sessionFactory.getCurrentSession().createQuery("from Supplierdetails").list();
+	}
+
+
+
+	@Override
+	public void updatesupplier(Supplierdetails supplier) {
+		Session session=sessionFactory.getCurrentSession();
+		session.update(supplier);
+	
+    
+		
 	}
 
 }
