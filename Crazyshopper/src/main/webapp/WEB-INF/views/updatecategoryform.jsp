@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 
-<form:form modelAttribute="category" action="updatecategory" method="post" enctype="multipart/form-data">
+<form:form action="updatecategory" method="post">
 <table>
 	   <tr>
 	   <td></td>
@@ -28,10 +28,7 @@
 		
 		<form:errors path="category" cssStyle="color:red"></form:errors>
 		
-			<tr>
-		<td>Upload an image</td>
-		<td><form:input type="file" path="image" ></form:input></td>
-		</tr>	
+			
 		<tr><td>
 		<input type="submit" value="Edit Category">  </td>
 		<td></td>

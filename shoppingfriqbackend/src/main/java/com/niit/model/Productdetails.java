@@ -32,6 +32,7 @@ public class Productdetails {
 	   
 	   
 	
+	
 	public Categorydetails getCategory() {
 		return category;
 	}

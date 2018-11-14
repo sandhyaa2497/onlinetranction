@@ -31,6 +31,11 @@ import com.niit.model.Supplierdetails;
 public class Suppliercontroller {
 	@Autowired
 	Supplierdao supplierDao;
+	@RequestMapping(value="/getsupplierform")
+	   public ModelAndView supplier(Model model) {
+		ModelAndView mv=new ModelAndView("Supplierf", "command", new Supplierdetails());
+		return mv;
+	   }
 	@RequestMapping(value = "/supplierlist", method = RequestMethod.GET)
 	public String getSupplier(Model model){
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
@@ -48,9 +53,9 @@ public class Suppliercontroller {
 	   }
 	   @RequestMapping(value = "/getsupplier", method = RequestMethod.GET)
 		  public ModelAndView getsup() {
-			  List<com.niit.model.Supplierdetails> clist=supplierDao.getAllSupplierdetails();
-			  ModelAndView mv=new ModelAndView("Supplierdisplay","suppliers",clist);
-			   mv.addObject("command",new com.niit.model.Supplierdetails());
+			  List<com.niit.model.Supplierdetails> slist=supplierDao.getAllSupplierdetails();
+			  ModelAndView mv=new ModelAndView("Supplierdisplay","suppliers",slist);
+			 
 			 return mv;
 			  
 		  }
@@ -67,8 +72,8 @@ public class Suppliercontroller {
 	   	Supplierdetails supplier=supplierDao.getsupplier(id);
 	   	System.out.println(supplier.getSupname());
 	   	model.addAttribute("supplier",supplier);
-	   	List<Supplierdetails> suppliers=supplierDao.getAllSupplierdetails();
-	   	model.addAttribute("suppliers",suppliers);
+	   	List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
+	   	model.addAttribute("suppliers",slist);
 	   	return "updatesupplierform";
 	   }
 	   @RequestMapping(value="/updatesupplier")
@@ -78,6 +83,7 @@ public class Suppliercontroller {
 	   		model.addAttribute("suppliers",slist);
 	   		return "updatesupplierform";
 	   	}
+	   	supplierDao.updatesupplier(supplier);
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 		model.addAttribute("suppliers",slist);
 	   	return "Supplierdisplay";

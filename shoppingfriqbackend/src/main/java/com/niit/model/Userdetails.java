@@ -1,7 +1,9 @@
 package com.niit.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -11,18 +13,22 @@ import org.springframework.stereotype.Component;
 @Table(name="Usertable")
 public class Userdetails {
 	
-	private String username;
+	
 	@Id
 	private String email;
-	private String phno;
-	private String password;
-	private String address;
 	
-	public String getPhno() {
-		return phno;
+	private String password;
+	private boolean enabled;
+	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)
+	private Authorities authorities;
+	@OneToOne(mappedBy="user")
+	private Customer customer;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setPhno(String phno) {
-		this.phno = phno;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -30,24 +36,26 @@ public class Userdetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getUsername() {
-		return username;
+	public boolean isEnabled() {
+		return enabled;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
-	public String getEmail() {
-		return email;
+	public Authorities getAuthorities() {
+		return authorities;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAuthorities(Authorities authorities) {
+		this.authorities = authorities;
 	}
-	
-	public String getAddress() {
-		return address;
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 }
+
+	
+	
+	

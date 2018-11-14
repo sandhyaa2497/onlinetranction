@@ -9,7 +9,7 @@ import com.niit.model.Categorydetails;
 public interface Categorydao {
 
  
-    public void addcategory(Categorydetails cd);
+    public void addcategory(Categorydetails category);
     
     public void updateCategory(Categorydetails category);
 	 

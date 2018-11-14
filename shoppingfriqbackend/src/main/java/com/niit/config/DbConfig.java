@@ -14,8 +14,12 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.Authorities;
+import com.niit.model.BillingAddress;
 import com.niit.model.Categorydetails;
+import com.niit.model.Customer;
 import com.niit.model.Productdetails;
+import com.niit.model.ShippingAddress;
 import com.niit.model.Supplierdetails;
 import com.niit.model.Userdetails;
 
@@ -55,6 +59,11 @@ public class DbConfig {
 	    sessionBuilder.addAnnotatedClasses(Productdetails.class);
 	    sessionBuilder.addAnnotatedClasses(Supplierdetails.class);
 	    sessionBuilder.addAnnotatedClasses(Userdetails.class);
+	    sessionBuilder.addAnnotatedClasses(Authorities.class);
+	    sessionBuilder.addAnnotatedClasses(BillingAddress.class);
+	    sessionBuilder.addAnnotatedClasses(Customer.class);
+	    sessionBuilder.addAnnotatedClasses(ShippingAddress.class);
+	    
 	   System.out.println("session created");
 	    return sessionBuilder.buildSessionFactory();
 	}

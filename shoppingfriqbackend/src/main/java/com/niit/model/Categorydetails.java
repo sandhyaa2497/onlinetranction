@@ -19,14 +19,10 @@ public class Categorydetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cid;
 	private String categoryname;
-	   @Transient
-	   private MultipartFile image;
+	  
 	   @OneToMany(mappedBy="category")  
-		private List<Productdetails> product;
-
-	
-	
-	
+		private List<Productdetails> products;
+	   
 	public int getCid() {
 		return cid;
 	}
@@ -39,19 +35,18 @@ public class Categorydetails {
 	public void setCategoryname(String categoryname) {
 		this.categoryname = categoryname;
 	}
-	public List<Productdetails> getProduct() {
-		return product;
+	
+	public List<Productdetails> getProducts() {
+		return products;
 	}
-	public void setProduct(List<Productdetails> product) {
-		this.product = product;
+	public void setProducts(List<Productdetails> products) {
+		this.products = products;
 	}
+	
 
-	public MultipartFile getImage() {
-		return image;
-	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
+	
+	
+	
 	
 	
 	
