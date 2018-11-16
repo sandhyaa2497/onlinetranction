@@ -23,7 +23,6 @@ private Userdetails user;
 private BillingAddress billingaddress;
 @OneToOne(cascade=CascadeType.ALL)
 private ShippingAddress shippingaddress;
-
 public int getCustomerId() {
 	return customerId;
 }
@@ -48,7 +47,6 @@ public String getPhonenumber() {
 public void setPhonenumber(String phonenumber) {
 	this.phonenumber = phonenumber;
 }
-
 public Userdetails getUser() {
 	return user;
 }
@@ -67,7 +65,6 @@ public ShippingAddress getShippingaddress() {
 public void setShippingaddress(ShippingAddress shippingaddress) {
 	this.shippingaddress = shippingaddress;
 }
-
 
 
 

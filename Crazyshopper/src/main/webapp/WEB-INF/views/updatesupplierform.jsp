@@ -26,7 +26,6 @@
 		</tr>
        
 		
-		<form:errors path="supplier" cssStyle="color:red"></form:errors>
 		
 			
 		<tr><td>

@@ -16,8 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.model.Authorities;
 import com.niit.model.BillingAddress;
+import com.niit.model.CartItem;
 import com.niit.model.Categorydetails;
 import com.niit.model.Customer;
+import com.niit.model.CustomerOrder;
 import com.niit.model.Productdetails;
 import com.niit.model.ShippingAddress;
 import com.niit.model.Supplierdetails;
@@ -62,6 +64,8 @@ public class DbConfig {
 	    sessionBuilder.addAnnotatedClasses(Authorities.class);
 	    sessionBuilder.addAnnotatedClasses(BillingAddress.class);
 	    sessionBuilder.addAnnotatedClasses(Customer.class);
+	    sessionBuilder.addAnnotatedClasses(CustomerOrder.class);
+	    sessionBuilder.addAnnotatedClasses(CartItem.class);
 	    sessionBuilder.addAnnotatedClasses(ShippingAddress.class);
 	    
 	   System.out.println("session created");

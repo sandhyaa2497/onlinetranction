@@ -44,7 +44,7 @@ public class Categorycontroller {
 		
 		return "Categorydisplay";
 	}
-	   @RequestMapping(value = "/addcategory", method = RequestMethod.GET)
+	   @RequestMapping(value = "/addcategory", method = RequestMethod.POST)
 	      public String addcategory(@ModelAttribute("SpringWeb")Categorydetails category, ModelMap model) 
 		   {
 	      model.addAttribute("categoryname", category.getCategoryname());
@@ -75,9 +75,9 @@ public class Categorycontroller {
 }
 	  @RequestMapping(value="/getupdatecategory")
 	   public String getupdatecategory(@RequestParam int id,Model model){
-	   	Categorydetails category=categoryDao.getcategory(id);
-	   	model.addAttribute("command",category);
-	   	System.out.println(category.getCategoryname());
+	   	Categorydetails categoryd=categoryDao.getcategory(id);
+	   	model.addAttribute("category",categoryd);
+	   	System.out.println(categoryd.getCategoryname());
 	   	List<Categorydetails> categorylist=categoryDao.getAllCategorydetails();
 		model.addAttribute("categories",categorylist);
 	 

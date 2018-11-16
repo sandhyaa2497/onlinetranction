@@ -1,3 +1,4 @@
+D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\CartItem.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\shoppingfriqbackend\App.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\Categorydaoimpl.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\Supplierdaoimpl.java
@@ -7,6 +8,7 @@ D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\config\DbConfig.
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\Categorydetails.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\ShippingAddress.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\Supplierdetails.java
+D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\CustomerOrder.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\BillingAddress.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\Productdao.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\Authorities.java
@@ -15,4 +17,6 @@ D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\CustomerDaoI
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\Supplierdao.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\CustomerDao.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\Userdetails.java
+D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\CartItemDaoImpl.java
+D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\dao\CartItemDao.java
 D:\eclipse-workspace\shoppingfriqbackend\src\main\java\com\niit\model\Customer.java

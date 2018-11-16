@@ -15,11 +15,13 @@
             <tr>
                <td><form:label path = "supname">Name</form:label></td>
                <td><form:input path = "supname" /></td>
+               <form:errors path="supname" cssStyle="color:red"></form:errors>
             </tr>
             
             <tr>
                <td><form:label path = "supid">id</form:label></td>
                <td><form:input path = "supid" /></td>
+               <form:errors path="supid" cssStyle="color:red"></form:errors>
             </tr>
             <tr>
                <td colspan = "2">

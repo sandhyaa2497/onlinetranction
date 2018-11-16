@@ -18,7 +18,7 @@ public class Categorydaoimpl implements Categorydao {
     private SessionFactory sessionFactory;
  
     public void addcategory(Categorydetails category) {
-        sessionFactory.getCurrentSession().saveOrUpdate(category);
+        sessionFactory.getCurrentSession().save(category);
  
     }
     public void updateCategory(Categorydetails category) {

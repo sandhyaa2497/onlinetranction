@@ -1,9 +1,6 @@
 package com.niit.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +31,8 @@ public class Suppliercontroller {
 	@RequestMapping(value="/getsupplierform")
 	   public ModelAndView supplier(Model model) {
 		ModelAndView mv=new ModelAndView("Supplierf", "command", new Supplierdetails());
+		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
+		model.addAttribute("suppliers",slist);
 		return mv;
 	   }
 	@RequestMapping(value = "/supplierlist", method = RequestMethod.GET)
@@ -69,9 +68,9 @@ public class Suppliercontroller {
 }
 	   @RequestMapping(value="/getupdatesupplier")
 	   public String getupdatesupplier(@RequestParam int id,Model model){
-	   	Supplierdetails supplier=supplierDao.getsupplier(id);
-	   	System.out.println(supplier.getSupname());
-	   	model.addAttribute("supplier",supplier);
+	   	Supplierdetails supplierd=supplierDao.getsupplier(id);
+	   	System.out.println(supplierd.getSupname());
+	   	model.addAttribute("supplier",supplierd);
 	   	List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 	   	model.addAttribute("suppliers",slist);
 	   	return "updatesupplierform";

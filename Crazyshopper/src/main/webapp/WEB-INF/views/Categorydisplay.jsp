@@ -29,7 +29,7 @@ ${cid}
 <td>${j.cid}</td>
 <td>
 <a href="<c:url value='/deletecategory?id=${j.cid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/getupdatecategory?id=${j.cid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a href="<c:url value='/getupdatecategory?id=${j.cid}'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 </tr>
 </c:forEach>

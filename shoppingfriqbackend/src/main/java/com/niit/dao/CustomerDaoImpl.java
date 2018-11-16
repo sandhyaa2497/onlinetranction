@@ -35,5 +35,11 @@ public class CustomerDaoImpl implements CustomerDao {
 			else 
 				return false;
 		}
+		@Override
+		public Userdetails getuser(String email) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 
 	}

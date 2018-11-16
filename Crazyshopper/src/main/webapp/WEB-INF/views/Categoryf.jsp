@@ -17,10 +17,7 @@
                <td><form:input path = "categoryname" /></td>
                <form:errors path="categoryname" cssStyle="color:red"></form:errors>
             </tr>
-            <tr>
-               <td><form:label path = "cid">Id</form:label></td>
-               <td><form:input path = "cid" /></td>
-            </tr> 
+            
            
             <tr>
                <td colspan = "2">

@@ -7,7 +7,7 @@ import com.niit.model.Supplierdetails;
 
 
 public interface Supplierdao {
-	public void addsupplier(Supplierdetails sd);
+	public void addsupplier(Supplierdetails supplier);
 	
 	public void updatesupplier(Supplierdetails supplier);
 	 

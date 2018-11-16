@@ -1,8 +1,11 @@
 package com.niit.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,11 +24,19 @@ public class Userdetails {
 	private boolean enabled;
 	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)
 	private Authorities authorities;
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)
 	private Customer customer;
+	@OneToMany(mappedBy="user")
+	private List<CartItem> cartItems;
 	
 	public String getEmail() {
 		return email;
+	}
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
 	}
 	public void setEmail(String email) {
 		this.email = email;

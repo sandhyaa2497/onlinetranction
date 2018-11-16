@@ -18,8 +18,8 @@ public class Supplierdaoimpl implements Supplierdao {
 	@Autowired
     private SessionFactory sessionFactory;
  
-    public void addsupplier(Supplierdetails sd) {
-        sessionFactory.getCurrentSession().saveOrUpdate(sd);
+    public void addsupplier(Supplierdetails supplier) {
+        sessionFactory.getCurrentSession().save(supplier);
  
     }
  
