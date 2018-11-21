@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,13 +31,19 @@ public class Productcontroller {
 	@Autowired
 	Productdao productDao;
 	
-	@RequestMapping(value="/getproductform")
+	@RequestMapping(value="/admin/getproductform")
 	   public ModelAndView product(Model model) {
 		ModelAndView mv=new ModelAndView("Productf", "product", new Productdetails());
 		List<Categorydetails> categories=productDao.getAllCategorydetails();
 		model.addAttribute("categories",categories);
 		return mv;
 	   }
+	@RequestMapping("/viewproduct-{prodid}")
+	public String getproduct(Model model,@PathVariable int prodid) {
+		Productdetails p=productDao.getproduct(prodid);
+		model.addAttribute("productAttr",p);
+		return "viewproduct";
+	}
 	@RequestMapping(value = "/productlist", method = RequestMethod.GET)
 	public String getProductForm(Model model){
 		List<Productdetails> plist=productDao.getAllProductdetails();
@@ -44,7 +51,7 @@ public class Productcontroller {
 		
 		return "Productdisplay";
 	}
-	   @RequestMapping(value = "/addproduct", method = RequestMethod.POST)
+	   @RequestMapping(value = "/admin/addproduct", method = RequestMethod.POST)
 	      public String addproduct(@Valid @ModelAttribute("product")Productdetails product,BindingResult result,ModelMap model,HttpServletRequest request) {
 		   if(result.hasErrors()){
 				return "Productf";
@@ -75,7 +82,7 @@ public class Productcontroller {
 	      
 	      return "Productdisplay";
 	   }
-	   @RequestMapping(value = "/getproduct", method = RequestMethod.GET)
+	   @RequestMapping(value = "/admin/getproduct", method = RequestMethod.GET)
 		  public ModelAndView getprod() {
 			  List<com.niit.model.Productdetails> clist=productDao.getAllProductdetails();
 			  ModelAndView mv=new ModelAndView("Productdisplay","products",clist);
@@ -83,7 +90,7 @@ public class Productcontroller {
 			 return mv;
 			  
 		  }
-	   @RequestMapping(value="/deleteproduct")
+	   @RequestMapping(value="/admin/deleteproduct")
 	   public String deleteProduct(@RequestParam int id,Model model){
 	   	productDao.deleteproduct(id);
 	   	List<Productdetails> plist=productDao.getAllProductdetails();
@@ -91,16 +98,16 @@ public class Productcontroller {
 	   	return "Productdisplay";
 	   	
 }
-	   @RequestMapping(value="/getupdateproduct")
+	   @RequestMapping(value="/admin/getupdateproduct")
 	   public String getupdateproduct(@RequestParam int id,Model model){
-	   	Productdetails product=Productdao.getproduct(id);
+	   	Productdetails product=productDao.getproduct(id);
 	   	System.out.println(product.getProdname());
 	   	model.addAttribute("product",product);
 	   	List<Categorydetails> categories=productDao.getAllCategorydetails();
 	   	model.addAttribute("categories",categories);
 	   	return "updateproductform";
 	   }
-	   @RequestMapping(value="/updateproduct")
+	   @RequestMapping(value="/admin/updateproduct")
 	   public String updateProduct(@Valid @ModelAttribute("product") Productdetails product,BindingResult result,Model model,HttpServletRequest request){
 	   	if(result.hasErrors()){
 	   		List<Categorydetails> categories=productDao.getAllCategorydetails();

@@ -12,11 +12,9 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-Category Choosen
-${categoryname}
-${cid}
+<jsp:include page="header.jsp" /> 
  <br/><br/>
-<table border="1">
+<table border="1" class="table">
 <tr>
 <th>Category Name</th>
 <th>Category Id</th>
@@ -28,8 +26,8 @@ ${cid}
 <td>${j.categoryname}</td>
 <td>${j.cid}</td>
 <td>
-<a href="<c:url value='/deletecategory?id=${j.cid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/getupdatecategory?id=${j.cid}'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="<c:url value='/admin/deletecategory?id=${j.cid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/admin/getupdatecategory?id=${j.cid}'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 </tr>
 </c:forEach>

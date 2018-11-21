@@ -34,7 +34,7 @@ private Productdao productDao;
 @Autowired
 	private CustomerDao customerDao;
 
-	@RequestMapping(value="/addtocart")
+	@RequestMapping(value="/cart/addtocart/{id}")
 	public String addToCart(
 			@PathVariable int id,
 			@RequestParam int requestedQuantity,
@@ -42,15 +42,15 @@ private Productdao productDao;
 			){
 		String email=  principal.getName();
 		
-		Productdetails product=Productdao.getproduct(id);
-		Userdetails user=customerDao.getuser(email);
+		Productdetails product=productDao.getproduct(id);
+		Userdetails user=customerDao.getUser(email);
 		List<CartItem> cartItems=cartItemDao.getCart(email);
 	for(CartItem cartItem:cartItems){
 			if(cartItem.getProduct().getProdid()==id){
 				cartItem.setQuantity(requestedQuantity);
 				cartItem.setTotalPrice(requestedQuantity * product.getPrize());
 		    cartItemDao.addToCart(cartItem);
-			    return "redirect:/getcart";
+			    return "redirect:/cart/getcart";
 			}
 		}
 		
@@ -64,9 +64,9 @@ private Productdao productDao;
 		
 		cartItemDao.addToCart(cartItem);
 		
-	return "redirect:/getcart";
+	return "redirect:/cart/getcart";
 }
-	@RequestMapping(value="/getcart")
+	@RequestMapping(value="/cart/getcart")
 	public String getCart(@AuthenticationPrincipal Principal principal,Model model,HttpSession session){ 
 	
 	String email=principal.getName();
@@ -76,38 +76,38 @@ private Productdao productDao;
 	model.addAttribute("cartItems",cartItems);
 	return "cart";
 	}
-	@RequestMapping(value="/removecartitem")
+	@RequestMapping(value="/cart/removecartitem")
 	public String removeCartItem(@PathVariable int cartItemId){
 		cartItemDao.removeCartItem(cartItemId);
-		return "redirect:/getcart";
+		return "redirect:/cart/getcart";
 	}
 
-	@RequestMapping(value="/clearcart")
+	@RequestMapping(value="/cart/clearcart")
 	public String clearCart(@AuthenticationPrincipal Principal principal){
 		List<CartItem> cartItems=cartItemDao.getCart(principal.getName());
 	for(CartItem cartItem:cartItems)
 			cartItemDao.removeCartItem(cartItem.getCartItemId());
-	return "redirect:/getcart";
+	return "redirect:/cart/getcart";
 	}
 	
-	@RequestMapping(value="/shippingaddressform")
+	@RequestMapping(value="/cart/shippingaddressform")
 	public String getShippingAddressForm(@AuthenticationPrincipal Principal principal,Model model){
 		String email=principal.getName();
 		
-	     Userdetails user=customerDao.getuser(email);
+	     Userdetails user=customerDao.getUser(email);
 	     Customer customer= user.getCustomer();
 	     ShippingAddress shippingAddress=customer.getShippingaddress();
 	     model.addAttribute("shippingaddress",shippingAddress);
-		return "shippingaddress";
+		return "Shippingaddress";
 	}
-	@RequestMapping(value="/createorder")
+	@RequestMapping(value="/cart/createorder")
 	public String createCustomerOrder(@ModelAttribute ShippingAddress shippingaddress,
 			Model model,
 			@AuthenticationPrincipal Principal principal,HttpSession session){
 		String email=principal.getName();
 		
 
-		Userdetails user=customerDao.getuser(email);
+		Userdetails user=customerDao.getUser(email);
 		List<CartItem> cartItems=cartItemDao.getCart(email);
 		Customer customer=user.getCustomer();
 	customer.setShippingaddress(shippingaddress);

@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="header.jsp" /> 
 <div class="container">
 <c:if test="${ !empty(cartItems) }">
 <a href="<c:url value='/clearcart'></c:url>" class="btn btn-danger" pull-left  >
@@ -25,12 +28,12 @@ Clear Cart
 <tbody id="tbody">
 <c:forEach items="${cartItems }" var="cartItem">
 <tr>
-<td>${cartItem.product.productname}</td>
+<td>${cartItem.product.prodname}</td>
 <td>${cartItem.quantity}</td>
 <td>${cartItem.totalPrice }</td>
 <c:set var="grandTotal" value="${grandTotal + cartItem.totalPrice }"></c:set>
 
-<td><a href="<c:url value='/removecartitem/${cartItem.cartItemId }'></c:url>" class="label label-danger" pull-left >
+<td><a href="<c:url value='/cart/removecartitem/${cartItem.cartItemId }'></c:url>" class="label label-danger" pull-left >
 
 <span class="glyphicon glyphicon-remove" ></span>Remove
 </a></td>
@@ -44,7 +47,7 @@ Total Price : ${grandTotal }
 <h3>Your Cart is Empty</h3>
 </c:if>
 <c:if test="${ !empty(cartItems) }">
-<a href="<c:url value='/shippingaddressform'></c:url>" class="btn btn-success pull-right">
+<a href="<c:url value='/cart/shippingaddressform'></c:url>" class="btn btn-success pull-right">
 <span class="glyphicon glyphicon-shopping-cart"></span> Place Order  </a>
 </c:if>
 </div>

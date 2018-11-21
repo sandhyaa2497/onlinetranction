@@ -12,11 +12,10 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-Supplier Details
-${supname}
-${supid}
+
+<jsp:include page="header.jsp" /> 
 <br/><br/>
-<table border="1">
+<table border="1" class="table">
 <tr>
 <th>Supplier Name</th>
 <th>Supplier Id</th>
@@ -29,8 +28,8 @@ ${supid}
 <td>${j.supname}</td>
 <td>${j.supid}</td>
 <td>
-<a href="<c:url value='/deletesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/getupdatesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+<a href="<c:url value='/admin/deletesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/admin/getupdatesupplier?id=${j.supid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td>
 </tr>
 </c:forEach>

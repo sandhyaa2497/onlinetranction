@@ -5,44 +5,37 @@
 <html>
    <head>
       <title>Spring MVC Form Handling</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    </head>
 
    <body>
-      <h2>USER DEATILS</h2>
-      <form:form method = "POST" action = "adduser">
-         <table>
-            <tr>
-               <td><form:label path = "username">Name</form:label></td>
-               <td><form:input path = "username" /></td>
+   <jsp:include page="header.jsp" /> 
+      <h2>USER DEATILS</h2> <c:url value='/adduser' var="url"></c:url>
+      <form:form method = "POST" action = "${url}">
+         <form:label path = "username">Name</form:label>
+             <form:input path = "username" />
                <form:errors path="username" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td><form:label path = "email">Email</form:label></td>
-               <td><form:input path = "email" /></td>
+               
+           <form:label path = "email">Email</form:label>
+               <form:input path = "email" />
                <form:errors path="email" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td><form:label path = "phno">Phone Number</form:label></td>
-               <td><form:input path = "phno" /></td>
+               
+           <form:label path = "phno">Phone Number</form:label>
+               <td><form:input path = "phno" />
                <form:errors path="phno" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td><form:label path = "password">Password</form:label></td>
-               <td><form:input path = "password" /></td>
+               
+           <form:label path = "password">Password</form:label>
+              <form:input path = "password" />
                <form:errors path="password" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td><form:label path = "address">Address</form:label></td>
-               <td><form:input path = "address" /></td>
+               
+          <form:label path = "address">Address</form:label>
+               <form:input path = "address" />
                <form:errors path="address" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td colspan = "2">
-                  <input type = "submit" value = "Submit"/>
-               </td>
-            </tr>
-           
-         </table>  
+            
+                  <input type = "submit" class="btn btn-warning" value = "Submit"/>
+              
       </form:form>
    </body>
    

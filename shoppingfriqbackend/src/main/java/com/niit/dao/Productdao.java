@@ -16,10 +16,7 @@ public interface Productdao {
     
 	public List<Categorydetails> getAllCategorydetails();
 
-	public static Productdetails getproduct(int prodid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public  Productdetails getproduct(int prodid);
 
 	
 }

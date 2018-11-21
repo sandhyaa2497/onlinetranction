@@ -6,68 +6,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="header.jsp" /> 
 <div class="container">
-
-<form:form modelAttribute="product" action="updateproduct" method="post" enctype="multipart/form-data">
-<table>
-	   <tr>
-	   <td></td>
-	   <td><form:hidden path="prodid"></form:hidden></td>
-	   </tr>
-		<tr>
-			<td>Enter Product Name</td>
-			<td>
+ <c:url value='/admin/updateproduct' var="url"></c:url>
+<form:form modelAttribute="product" action="${url}" method="post" enctype="multipart/form-data">
+<form:hidden path="prodid"></form:hidden>
+	   Enter Product Name
+			
 			<form:input path="prodname" value="${prodname}"/>
 			<form:errors path="prodname" cssStyle="color:red"></form:errors>
 
-			</td>
-		</tr>
-        <tr>
-			<td>Enter Product Description</td>
-			<td>
+			
+			Enter Product Description
+			
 			<form:textarea path="prodetails"/>
 			<form:errors path="prodetails" cssStyle="color:red"></form:errors>
-			</td>
-		</tr>
-        <tr>
-			<td>Enter Product Price</td>
-			<td>
+			Enter Product Price
+			
 			<form:input path="prize"/>
-			<form:errors path="prize" cssStyle="color:red"></form:errors>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>Enter Product Quantity</td>
-			<td>
+			Enter Product Quantity
+			
 			<form:input path="quantity"/>
 			<form:errors path="quantity" cssStyle="color:red"></form:errors>
-			</td>
-		</tr>
-		<tr>
-		<td>Select Category</td>
-		<td><form:select path="category.cid">
+			Select Category
+		<form:select path="category.cid">
 		<c:forEach items="${categories}" var="c">
 		<form:option value="${c.cid }">${c.categoryname }</form:option>
 		
 		</c:forEach>
 		</form:select>
 		<form:errors path="category" cssStyle="color:red"></form:errors>
-		</td></tr>
-			<tr>
-		<td>Upload an image</td>
-		<td><form:input type="file" path="image" ></form:input></td>
-		</tr>	
-		<tr><td>
-		<input type="submit" value="Edit Product">  </td>
-		<td></td>
-		</tr>
 		
-	</table>
-
+		Upload an image
+		<form:input type="file" path="image" ></form:input>
+		
+		<input type="submit" class="btn btn-warning" value="Edit Product"> 
 
 
 </form:form>

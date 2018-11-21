@@ -5,38 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="header.jsp" /> 
 <div class="container">
-
-<form:form action="updatecategory" modelAttribute="category" method="post">
-<table>
-	   <tr>
-	   <td></td>
-	   <td><form:hidden path="cid"></form:hidden></td>
-	   </tr>
-		<tr>
-			<td>Enter Category Name</td>
-			<td>
+ <c:url value='/admin/updatecategory' var="url"></c:url>
+<form:form action="${url}" modelAttribute="category" method="post">
+<form:hidden path="cid"></form:hidden>
+	   Enter Category Name
+			
 			<form:input path="categoryname" value="${categoryname}"/>
 			<form:errors path="categoryname" cssStyle="color:red"></form:errors>
 
-			</td>
-		</tr>
-       
+		<input type="submit" class="btn btn-warning" value="Edit Category"> 
 		
-		
-		
-			
-		<tr><td>
-		<input type="submit" value="Edit Category">  </td>
-		<td></td>
-		</tr>
-		
-	</table>
-
-
 
 </form:form>
 </div>

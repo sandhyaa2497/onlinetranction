@@ -12,12 +12,10 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-User Details \
-${username}
-${email}
+<jsp:include page="header.jsp" /> 
  <br/><br/>
 
-<table border="1">
+<table border="1" class="table">
 <tr>
 <th>User Name</th>
 <th>Phone Number</th>

@@ -12,13 +12,14 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<jsp:include page="header.jsp" /> 
 Product Choosen
 ${prodname}
 ${prodid}
 <br/><br/>
 
 	<div class="container">
-<table border="1">
+<table border="1" class="table">
 
 <thead>
 <tr>
@@ -28,7 +29,7 @@ ${prodid}
 <th>Product Description</th>
 <th>Product Quantity</th>
 <th>Image</th>
-<th>Action</th>
+
 
 
 </tr>
@@ -44,12 +45,12 @@ ${prodid}
 <td>${j.quantity}</td>
 <td>${j.image}
 <img src="<c:url value="/resources/images/${j.prodid}.jpg" />" width="100" height="50"/></td> 
-
+<c:if test="${pageContext.request.userPrincipal.name == 'anu@gmail.com'}">
 <td>
 
-					<a href="<c:url value='/deleteproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-					<a href="<c:url value='/getupdateproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
-					</td>
+					<a href="<c:url value='/admin/deleteproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="<c:url value='/admin/getupdateproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+					</td></c:if>
 </tr>
 </c:forEach>
 </tbody>

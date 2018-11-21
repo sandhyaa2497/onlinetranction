@@ -36,9 +36,11 @@ public class CustomerDaoImpl implements CustomerDao {
 				return false;
 		}
 		@Override
-		public Userdetails getuser(String email) {
-			// TODO Auto-generated method stub
-			return null;
+		public Userdetails getUser(String email) {
+			Session session=sessionFactory.getCurrentSession();
+			Userdetails user=session.get(Userdetails.class,email);
+			return user;
+			
 		}
 		
 

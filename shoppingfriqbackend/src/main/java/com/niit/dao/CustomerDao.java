@@ -18,7 +18,10 @@ public interface CustomerDao {
 	boolean isEmailUnique(String email);
 
 
-	Userdetails getuser(String email);
+	
+
+
+	Userdetails getUser(String email);
 
 }
 

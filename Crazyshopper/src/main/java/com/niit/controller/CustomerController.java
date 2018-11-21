@@ -16,13 +16,13 @@ public class CustomerController {
 	  private CustomerDao customerDao;
 		
 		
-		@RequestMapping(value="/getregistrationform")
+		@RequestMapping(value="/all/getregistrationform")
 		public String getRegistrationForm(Model model){
 		Customer customer	=new Customer();
 		model.addAttribute("customer",customer);	
 		return "registrationform";	
 		}
-		@RequestMapping(value="/registercustomer")
+		@RequestMapping(value="/all/registercustomer")
 		public String registerCustomer(@ModelAttribute Customer customer,Model model){
 			String email=customer.getUser().getEmail();
 			if(!customerDao.isEmailUnique(email)){

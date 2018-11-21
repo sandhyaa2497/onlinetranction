@@ -29,7 +29,7 @@ public class Categorycontroller {
 	@Autowired
 	Categorydao categoryDao;
 	
-	@RequestMapping(value="/getcategoryform")
+	@RequestMapping(value="/admin/getcategoryform")
 	   public ModelAndView category(Model model) {
 		ModelAndView mv=new ModelAndView("Categoryf", "command", new Categorydetails());
 		List<Categorydetails> categorylist=categoryDao.getAllCategorydetails();
@@ -44,7 +44,7 @@ public class Categorycontroller {
 		
 		return "Categorydisplay";
 	}
-	   @RequestMapping(value = "/addcategory", method = RequestMethod.POST)
+	   @RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
 	      public String addcategory(@ModelAttribute("SpringWeb")Categorydetails category, ModelMap model) 
 		   {
 	      model.addAttribute("categoryname", category.getCategoryname());
@@ -57,7 +57,7 @@ public class Categorycontroller {
 		model.addAttribute("categories",categorylist);
 	      return "Categorydisplay";
 	   }
-	  @RequestMapping(value = "/getcategory", method = RequestMethod.GET)
+	  @RequestMapping(value = "/admin/getcategory", method = RequestMethod.GET)
 	  public ModelAndView getcatt() {
 		  List<Categorydetails> categorylist=categoryDao.getAllCategorydetails();
 		  ModelAndView mn=new ModelAndView("Categorydisplay","command",new Categorydetails());
@@ -65,7 +65,7 @@ public class Categorycontroller {
 		 return mn;
 		  
 	  }
-	  @RequestMapping(value="/deletecategory")
+	  @RequestMapping(value="/admin/deletecategory")
 	   public String deleteCategory(@RequestParam int id,Model model){
 	   categoryDao.deletecategory(id);
 	   	List<Categorydetails> categorylist=categoryDao.getAllCategorydetails();
@@ -73,7 +73,7 @@ public class Categorycontroller {
 	   	return "Categorydisplay";
 	   	
 }
-	  @RequestMapping(value="/getupdatecategory")
+	  @RequestMapping(value="/admin/getupdatecategory")
 	   public String getupdatecategory(@RequestParam int id,Model model){
 	   	Categorydetails categoryd=categoryDao.getcategory(id);
 	   	model.addAttribute("category",categoryd);
@@ -84,7 +84,7 @@ public class Categorycontroller {
 	  
 	   	return "updatecategoryform";
 	   }
-	  @RequestMapping(value="/updatecategory",method=RequestMethod.POST)
+	  @RequestMapping(value="/admin/updatecategory",method=RequestMethod.POST)
 	   public String updateCategory(@Valid @ModelAttribute("category") Categorydetails category,BindingResult result,Model model,HttpServletRequest request){
 	   	if(result.hasErrors()){
 	   		List<Categorydetails> categorylist=categoryDao.getAllCategorydetails();

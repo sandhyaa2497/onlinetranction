@@ -6,10 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <body>
+<jsp:include page="header.jsp" /> 
 <div class="container-wrapper">
     <div class="container">
     
@@ -73,11 +76,11 @@
                               
                                 <c:forEach var="cartItem" items="${cartItems}">
                                     <tr>
-                            <c:url value="/resources/images/${cartItem.product.id }.jpg" var="imgUrl"></c:url>
+                            <c:url value="/resources/images/${cartItem.product.prodid}.jpg" var="imgUrl"></c:url>
                                         <td><img src="${imgUrl }" height="50px" width="50px">  </td>
-                                        <td class="col-md-9"><em>${cartItem.product.productname}</em></td>
+                                        <td class="col-md-9"><em>${cartItem.product.prodname}</em></td>
                                         <td class="col-md-1" style="text-align: center">${cartItem.quantity}</td>
-                                        <td class="col-md-1" style="text-align: center">${cartItem.product.price}</td>
+                                        <td class="col-md-1" style="text-align: center">${cartItem.product.prize}</td>
                                         <td class="col-md-1" style="text-align: center">${cartItem.totalPrice}</td>
                                        
                                     </tr>
@@ -91,7 +94,7 @@
                                         <h4><strong>Grand Total:</strong></h4>
                                     </td>
                                     <td class="text-center text-danger">
-                                        <h4><strong>Rs. ${customerorder.grandTotal }</strong></h4>
+                                        <h4><strong>Rs. ${customerorder.grandTotal}</strong></h4>
                                     </td>
                                 </tr>
 

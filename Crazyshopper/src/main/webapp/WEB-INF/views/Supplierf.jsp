@@ -5,31 +5,26 @@
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
    <head>
-      <title>Spring MVC Form Handling</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    </head>
 
    <body>
-      <h2>SUPPLIER DETAILS</h2>
-      <form:form method = "POST" action = "addsupplier">
-         <table>
-            <tr>
-               <td><form:label path = "supname">Name</form:label></td>
-               <td><form:input path = "supname" /></td>
+   <jsp:include page="header.jsp" /> 
+      <h2>SUPPLIER DETAILS</h2> <c:url value='/admin/addsupplier' var="url"></c:url>
+      <form:form method = "POST" action = "${url}">
+         <form:label path = "supname">Name</form:label>
+              <form:input path = "supname" />
                <form:errors path="supname" cssStyle="color:red"></form:errors>
-            </tr>
             
-            <tr>
-               <td><form:label path = "supid">id</form:label></td>
-               <td><form:input path = "supid" /></td>
+              <form:label path = "supid">id</form:label>
+              <form:input path = "supid" />
                <form:errors path="supid" cssStyle="color:red"></form:errors>
-            </tr>
-            <tr>
-               <td colspan = "2">
-                  <input type = "submit" value = "Submit"/>
-               </td>
-            </tr>
             
-         </table>  
+                  <input type = "submit" class="btn btn-warning" value = "Submit"/>
+                 
+             
       </form:form>
    </body>
    

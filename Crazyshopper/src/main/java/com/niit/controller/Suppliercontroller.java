@@ -28,7 +28,7 @@ import com.niit.model.Supplierdetails;
 public class Suppliercontroller {
 	@Autowired
 	Supplierdao supplierDao;
-	@RequestMapping(value="/getsupplierform")
+	@RequestMapping(value="/admin/getsupplierform")
 	   public ModelAndView supplier(Model model) {
 		ModelAndView mv=new ModelAndView("Supplierf", "command", new Supplierdetails());
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
@@ -42,7 +42,7 @@ public class Suppliercontroller {
 		
 		return "Supplierdisplay";
 	}
-	   @RequestMapping(value = "/addsupplier", method = RequestMethod.POST)
+	   @RequestMapping(value = "/admin/addsupplier", method = RequestMethod.POST)
 	      public String addsupplier(@ModelAttribute("SpringWeb")Supplierdetails supplier,ModelMap model) {
 	      model.addAttribute("supname", supplier.getSupname());
 	     
@@ -50,7 +50,7 @@ public class Suppliercontroller {
 	      supplierDao.addsupplier(supplier);
 	      return "Supplierdisplay";
 	   }
-	   @RequestMapping(value = "/getsupplier", method = RequestMethod.GET)
+	   @RequestMapping(value = "/admin/getsupplier", method = RequestMethod.GET)
 		  public ModelAndView getsup() {
 			  List<com.niit.model.Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 			  ModelAndView mv=new ModelAndView("Supplierdisplay","suppliers",slist);
@@ -58,7 +58,7 @@ public class Suppliercontroller {
 			 return mv;
 			  
 		  }
-	   @RequestMapping(value="/deletesupplier")
+	   @RequestMapping(value="/admin/deletesupplier")
 	   public String deleteSupplier(@RequestParam int id,Model model){
 	   supplierDao.deletesupplier(id);
 	   	List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
@@ -66,7 +66,7 @@ public class Suppliercontroller {
 	   	return "Supplierdisplay";
 	   	
 }
-	   @RequestMapping(value="/getupdatesupplier")
+	   @RequestMapping(value="/admin/getupdatesupplier")
 	   public String getupdatesupplier(@RequestParam int id,Model model){
 	   	Supplierdetails supplierd=supplierDao.getsupplier(id);
 	   	System.out.println(supplierd.getSupname());
@@ -75,7 +75,7 @@ public class Suppliercontroller {
 	   	model.addAttribute("suppliers",slist);
 	   	return "updatesupplierform";
 	   }
-	   @RequestMapping(value="/updatesupplier")
+	   @RequestMapping(value="/admin/updatesupplier")
 	   public String updateSupplier(@Valid @ModelAttribute("supplier") Supplierdetails supplier,BindingResult result,Model model,HttpServletRequest request){
 	   	if(result.hasErrors()){
 	   		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
