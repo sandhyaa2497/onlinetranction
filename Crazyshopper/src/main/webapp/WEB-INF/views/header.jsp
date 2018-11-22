@@ -29,7 +29,7 @@
 <div class="collapse navbar-collapse" id="navbardemo">
 <ul class="nav navbar-nav">
 <li><a href="<c:url value='/home'></c:url>"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-<li><a href="#">AboutUs</a></li><c:if test="${pageContext.request.userPrincipal.name == 'anu@gmail.com'}">
+<li><a href="<c:url value='aboutus'></c:url>">AboutUs</a></li><c:if test="${pageContext.request.userPrincipal.name == 'anu@gmail.com'}">
 <li><a href="<c:url value='/admin/adminpage'></c:url>"><span class="glyphicon glyphicon-plus"></span>Manage store</a></li></c:if>
 <li><a href="<c:url value='/productlist'></c:url>">Browse all products</a></li>
 <li class="dropdown"><a  class="dropdown-toggle" data-toggle="dropdown"href="#">Select By Category<span class="caret"></span></a>

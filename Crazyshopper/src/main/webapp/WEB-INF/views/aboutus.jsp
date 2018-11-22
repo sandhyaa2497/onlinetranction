@@ -11,8 +11,8 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<c:url value='/aboutus' var="abt"></c:url>
-<form method = "POST" action = "${abt} "> 
+
+
 <h1><i>CRAZY SHOPPER</i></h1>
 <P>
 CrazyShopper online shopping app is a place where you any find trending products with 
@@ -21,7 +21,7 @@ with 2-3 days all around the world.We assure of the quantity of our product whic
 dought...
 <h2>Keeping Shopping</h2>
 <h3><i>Thank you</i></h3>
-</form>
+
 
 </body>
 </html>

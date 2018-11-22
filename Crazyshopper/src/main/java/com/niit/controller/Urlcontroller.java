@@ -38,26 +38,51 @@ public class Urlcontroller {
 	
 	
 	@RequestMapping("/admin/adminpage")
-	public String admin(){
+	public String admin(Model model){
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "adminhome";
 	}
 	
 	@RequestMapping("/login")
-	public String login(){
+	public String login(Model model){
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "login";
 	}
 	@RequestMapping("/loginerror")
 	public String loginError(Model model){
 		model.addAttribute("loginError","Invalid email/password");
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "login";
 	}
 	@RequestMapping(value="/logout")
 	public String logout(Model model){
 		model.addAttribute("message","Loggedout successfully..");
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "login";
 	}
 	@RequestMapping("/aboutus")
-	public String aboutus(){
+	public String aboutus(Model model){
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "aboutus";
 	}
 
