@@ -17,7 +17,7 @@
 <div class="container">
 <nav class="navbar navbar-default" id="navbar-bg">
 <div class="navbar-header">
-				<a href="" class="navbar-brand"><img src="<c:url value='/resources/images/cart.jpg'></c:url>"  height="30px" width="60px"></a>
+
 				<button type="button" class="navbar-toggle collapsed" 
    data-toggle="collapse" data-target="#navbardemo" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -36,7 +36,7 @@
 					
 				<ul class="dropdown-menu">
 			    <c:forEach var="c" items="${categories}">
-				<li><a href="filterproduct/${c.cid}">${c.categoryname}</a></li>
+				<li><a href="<c:url value='/filterproduct/${c.cid}' ></c:url>" >${c.categoryname}</a></li>
 				</c:forEach>
 				</ul>
 </li>

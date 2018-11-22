@@ -41,8 +41,7 @@ public class Categorydaoimpl implements Categorydao {
                 Categorydetails.class, cid);
     }
     @SuppressWarnings("unchecked")
-	@Override
-    public List<Categorydetails> getAllCategorydetails() {
+	public List<Categorydetails> getAllCategorydetails() {
     	 
         return sessionFactory.getCurrentSession().createQuery("from Categorydetails").list();
     }

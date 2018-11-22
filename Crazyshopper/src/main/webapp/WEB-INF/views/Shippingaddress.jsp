@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" /> 
-      <h2>PRODUCT DETAILS</h2>
+      <h2>Shipping Address</h2>
       <c:url value='/cart/createorder' var="url"></c:url>
       <form:form method = "POST" action = "${url}" modelAttribute="shippingaddress" >
       

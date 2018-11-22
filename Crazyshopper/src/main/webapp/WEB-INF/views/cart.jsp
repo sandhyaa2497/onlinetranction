@@ -18,7 +18,7 @@
 <span class="glyphicon glypicon-remove"></span>
 Clear Cart
 </a>
-</c:if>
+
 <table class="table table-striped">
 <thead id="thead">
 <tr><th>ProductName</th><th>Quantity</th><th>Total Price</th><th>Remove</th>
@@ -43,13 +43,17 @@ Clear Cart
 </tbody>
 </table>
 Total Price : ${grandTotal }
-<c:if test="${empty(cartItems) }">
-<h3>Your Cart is Empty</h3>
-</c:if>
-<c:if test="${ !empty(cartItems) }">
+
 <a href="<c:url value='/cart/shippingaddressform'></c:url>" class="btn btn-success pull-right">
 <span class="glyphicon glyphicon-shopping-cart"></span> Place Order  </a>
 </c:if>
+
+<c:if test="${ empty cartItems}">
+<h3>Your Cart is Empty</h3>
+</c:if>
+
+<a href="<c:url value='/home'></c:url>"><button type="button" class="btn btn-primary">continue shopping</button></a>
+					
 </div>
 </body>
 </html>

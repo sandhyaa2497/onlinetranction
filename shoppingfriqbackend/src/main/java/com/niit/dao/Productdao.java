@@ -13,7 +13,7 @@ public interface Productdao {
  
     public void deleteproduct(int Prodid);
     
-    
+    public List<Productdetails> getproductbycat(int catid);
 	public List<Categorydetails> getAllCategorydetails();
 
 	public  Productdetails getproduct(int prodid);

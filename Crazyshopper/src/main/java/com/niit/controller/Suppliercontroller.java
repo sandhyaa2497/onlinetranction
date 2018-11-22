@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.niit.dao.Categorydao;
+import com.niit.dao.Productdao;
 import com.niit.dao.Supplierdao;
-
+import com.niit.model.Categorydetails;
+import com.niit.model.Productdetails;
 import com.niit.model.Supplierdetails;
 
 
@@ -28,17 +30,32 @@ import com.niit.model.Supplierdetails;
 public class Suppliercontroller {
 	@Autowired
 	Supplierdao supplierDao;
+	@Autowired
+	Productdao productDao;
+	@Autowired
+	Categorydao categoryDao; 
+	
 	@RequestMapping(value="/admin/getsupplierform")
 	   public ModelAndView supplier(Model model) {
 		ModelAndView mv=new ModelAndView("Supplierf", "command", new Supplierdetails());
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 		model.addAttribute("suppliers",slist);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return mv;
 	   }
 	@RequestMapping(value = "/supplierlist", method = RequestMethod.GET)
 	public String getSupplier(Model model){
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 		model.addAttribute("suppliers",slist);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);;
 		
 		return "Supplierdisplay";
 	}
@@ -48,13 +65,22 @@ public class Suppliercontroller {
 	     
 	      model.addAttribute("supid", supplier.getSupid());
 	      supplierDao.addsupplier(supplier);
+	      List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 	      return "Supplierdisplay";
 	   }
 	   @RequestMapping(value = "/admin/getsupplier", method = RequestMethod.GET)
 		  public ModelAndView getsup() {
 			  List<com.niit.model.Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 			  ModelAndView mv=new ModelAndView("Supplierdisplay","suppliers",slist);
-			 
+			  List<Productdetails> plist=productDao.getAllProductdetails();
+		        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+				
+		        mv.addObject("categories",clist);
+				mv.addObject("products",plist);
 			 return mv;
 			  
 		  }
@@ -63,6 +89,11 @@ public class Suppliercontroller {
 	   supplierDao.deletesupplier(id);
 	   	List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 		model.addAttribute("suppliers",slist);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "Supplierdisplay";
 	   	
 }
@@ -73,18 +104,29 @@ public class Suppliercontroller {
 	   	model.addAttribute("supplier",supplierd);
 	   	List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 	   	model.addAttribute("suppliers",slist);
+	   	List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "updatesupplierform";
 	   }
-	   @RequestMapping(value="/admin/updatesupplier")
+	   @RequestMapping(value="/admin/updatesupplier",method=RequestMethod.POST)
 	   public String updateSupplier(@Valid @ModelAttribute("supplier") Supplierdetails supplier,BindingResult result,Model model,HttpServletRequest request){
 	   	if(result.hasErrors()){
 	   		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 	   		model.addAttribute("suppliers",slist);
+	   		
 	   		return "updatesupplierform";
 	   	}
 	   	supplierDao.updatesupplier(supplier);
 		List<Supplierdetails> slist=supplierDao.getAllSupplierdetails();
 		model.addAttribute("suppliers",slist);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "Supplierdisplay";
 	   }
 	   	

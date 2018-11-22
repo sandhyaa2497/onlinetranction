@@ -13,13 +13,12 @@
 </head>
 <body>
 <jsp:include page="header.jsp" /> 
-Product Choosen
-${prodname}
-${prodid}
-<br/><br/>
+
 
 	<div class="container">
-<table border="1" class="table">
+	
+	<c:if test="${not empty prodlist}">
+	<table border="1" class="table">
 
 <thead>
 <tr>
@@ -38,6 +37,7 @@ ${prodid}
 </tbody>
 <c:forEach var="j" items="${prodlist}">
 <tr>
+
 <td>${j.prodname}</td>
 <td>${j.prodid}</td>
 <td>${j.prize}</td>
@@ -51,10 +51,16 @@ ${prodid}
 					<a href="<c:url value='/admin/deleteproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
 					<a href="<c:url value='/admin/getupdateproduct?id=${j.prodid }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 					</td></c:if>
+					<c:if test="${pageContext.request.userPrincipal.name != 'anu@gmail.com'}">
+					<c:if test="${pageContext.request.userPrincipal.name != null}">
+<td>
+					<a href="<c:url value='/viewproduct-${j.prodid}'></c:url>"><button type="button" class="btn btn-primary">Add to cart</button></a>
+					</td></c:if></c:if>
 </tr>
 </c:forEach>
 </tbody>
 </table>
+</c:if>
 </div>
 </body>
 </html>

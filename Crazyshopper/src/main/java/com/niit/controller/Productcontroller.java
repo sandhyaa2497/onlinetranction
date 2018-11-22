@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.niit.dao.Categorydao;
 import com.niit.dao.Productdao;
 import com.niit.model.Categorydetails;
 import com.niit.model.Productdetails;
@@ -30,26 +30,61 @@ import com.niit.model.Productdetails;
 public class Productcontroller {
 	@Autowired
 	Productdao productDao;
-	
+	@Autowired
+	Categorydao categoryDao;
 	@RequestMapping(value="/admin/getproductform")
 	   public ModelAndView product(Model model) {
 		ModelAndView mv=new ModelAndView("Productf", "product", new Productdetails());
 		List<Categorydetails> categories=productDao.getAllCategorydetails();
 		model.addAttribute("categories",categories);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return mv;
 	   }
 	@RequestMapping("/viewproduct-{prodid}")
 	public String getproduct(Model model,@PathVariable int prodid) {
 		Productdetails p=productDao.getproduct(prodid);
 		model.addAttribute("productAttr",p);
+		List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
+	
 		return "viewproduct";
 	}
 	@RequestMapping(value = "/productlist", method = RequestMethod.GET)
 	public String getProductForm(Model model){
 		List<Productdetails> plist=productDao.getAllProductdetails();
 		model.addAttribute("prodlist",plist);
+		List<Categorydetails> clist=categoryDao.getAllCategorydetails();
 		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 		return "Productdisplay";
+		
+	}
+	
+	@RequestMapping("/filterproduct/{catid}")
+	public String getproductbycategory(Model model,@PathVariable int catid) {
+		List<Productdetails> plist=productDao.getproductbycat(catid);
+		if(plist.size()!=0)
+		{
+			System.out.println(plist);
+		model.addAttribute("products",plist);
+		}
+		else {
+			model.addAttribute("prodcat","Products under this category are currently not available!!!. We will upload soon.....");
+		}
+		
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
+		return "home";
 	}
 	   @RequestMapping(value = "/admin/addproduct", method = RequestMethod.POST)
 	      public String addproduct(@Valid @ModelAttribute("product")Productdetails product,BindingResult result,ModelMap model,HttpServletRequest request) {
@@ -79,14 +114,23 @@ public class Productcontroller {
 	  	}
 	  	List<Productdetails> plist=productDao.getAllProductdetails();
 		model.addAttribute("prodlist",plist);
-	      
+		
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	      return "Productdisplay";
 	   }
-	   @RequestMapping(value = "/admin/getproduct", method = RequestMethod.GET)
+	   @RequestMapping(value = "/admin/getproduct",method = RequestMethod.GET)
 		  public ModelAndView getprod() {
 			  List<com.niit.model.Productdetails> clist=productDao.getAllProductdetails();
 			  ModelAndView mv=new ModelAndView("Productdisplay","products",clist);
 			   mv.addObject("command",new com.niit.model.Productdetails());
+			   List<Productdetails> plist=productDao.getAllProductdetails();
+		        List<Categorydetails> catlist=categoryDao.getAllCategorydetails();
+				
+		        mv.addObject("categories",catlist);
+				mv.addObject("products",plist);
 			 return mv;
 			  
 		  }
@@ -95,6 +139,11 @@ public class Productcontroller {
 	   	productDao.deleteproduct(id);
 	   	List<Productdetails> plist=productDao.getAllProductdetails();
 		model.addAttribute("prodlist",plist);
+		
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "Productdisplay";
 	   	
 }
@@ -105,6 +154,11 @@ public class Productcontroller {
 	   	model.addAttribute("product",product);
 	   	List<Categorydetails> categories=productDao.getAllCategorydetails();
 	   	model.addAttribute("categories",categories);
+	   	List<Productdetails> plist=productDao.getAllProductdetails();
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "updateproductform";
 	   }
 	   @RequestMapping(value="/admin/updateproduct")
@@ -112,6 +166,11 @@ public class Productcontroller {
 	   	if(result.hasErrors()){
 	   		List<Categorydetails> categories=productDao.getAllCategorydetails();
 	   		model.addAttribute("categories",categories);
+	   		List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 	   		return "updateproductform";
 	   	}
 	   	productDao.updateProduct(product);
@@ -137,6 +196,11 @@ public class Productcontroller {
 	   	}
 	   	List<Productdetails> plist=productDao.getAllProductdetails();
 		model.addAttribute("prodlist",plist);
+		
+        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	   	return "Productdisplay";
 	   }
 }

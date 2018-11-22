@@ -12,21 +12,21 @@
 <body>
 <jsp:include page="header.jsp" />
 <table border="1" class="table"> 
-<h3>Manage products</h3><c:url value='/admin/getproductform' var="url"></c:url>
+<h3>Manage Products</h3><c:url value='/admin/getproductform' var="url"></c:url>
 <a href="${url}">Add product</a>
 <br/>
 <c:url value='/productlist' var="prodl"></c:url>
 <a href="${prodl}">Update or delete product</a>
 <br/>
 
-<h3>Manage products</h3><c:url value='/admin/getsupplierform' var="addsupp"></c:url>
+<h3>Manage Supplier</h3><c:url value='/admin/getsupplierform' var="addsupp"></c:url>
 <a href="${addsupp}">Add Supplier</a>
 <br/>
 <c:url value='/supplierlist' var="supl"></c:url>
 <a href="${supl}">Update or delete supplier</a>
 <br/>
 
-<h3>Manage products</h3><c:url value='/admin/getcategoryform' var="addcat"></c:url>
+<h3>Manage Category</h3><c:url value='/admin/getcategoryform' var="addcat"></c:url>
 <a href="${addcat}">Add category</a>
 <br/>
 <c:url value='/categorylist' var="catl"></c:url>

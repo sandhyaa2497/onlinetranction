@@ -56,6 +56,10 @@ public class Urlcontroller {
 		model.addAttribute("message","Loggedout successfully..");
 		return "login";
 	}
+	@RequestMapping("/aboutus")
+	public String aboutus(){
+		return "aboutus";
+	}
 
 		 }
 	

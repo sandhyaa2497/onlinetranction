@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.dao.CartItemDao;
+import com.niit.dao.Categorydao;
 import com.niit.dao.CustomerDao;
 import com.niit.dao.Productdao;
 import com.niit.model.CartItem;
+import com.niit.model.Categorydetails;
 import com.niit.model.Customer;
 import com.niit.model.CustomerOrder;
 import com.niit.model.Productdetails;
@@ -29,6 +31,8 @@ import com.niit.model.Userdetails;
 public class CartItemController {
 	@Autowired
 	private CartItemDao cartItemDao;
+	@Autowired
+	Categorydao categoryDao;
 @Autowired
 private Productdao productDao;
 @Autowired
@@ -38,8 +42,7 @@ private Productdao productDao;
 	public String addToCart(
 			@PathVariable int id,
 			@RequestParam int requestedQuantity,
-			@AuthenticationPrincipal Principal principal
-			){
+			@AuthenticationPrincipal Principal principal,Model model){
 		String email=  principal.getName();
 		
 		Productdetails product=productDao.getproduct(id);
@@ -50,6 +53,7 @@ private Productdao productDao;
 				cartItem.setQuantity(requestedQuantity);
 				cartItem.setTotalPrice(requestedQuantity * product.getPrize());
 		    cartItemDao.addToCart(cartItem);
+		  
 			    return "redirect:/cart/getcart";
 			}
 		}
@@ -63,6 +67,11 @@ private Productdao productDao;
 	cartItem.setTotalPrice(requestedQuantity * product.getPrize());
 		
 		cartItemDao.addToCart(cartItem);
+		  List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 		
 	return "redirect:/cart/getcart";
 }
@@ -74,19 +83,34 @@ private Productdao productDao;
 		
 		session.setAttribute("cartSize", cartItems.size());
 	model.addAttribute("cartItems",cartItems);
+	  List<Productdetails> plist=productDao.getAllProductdetails();
+      List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	return "cart";
 	}
 	@RequestMapping(value="/cart/removecartitem")
-	public String removeCartItem(@PathVariable int cartItemId){
+	public String removeCartItem(@PathVariable int cartItemId,Model model){
 		cartItemDao.removeCartItem(cartItemId);
+		  List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 		return "redirect:/cart/getcart";
 	}
 
 	@RequestMapping(value="/cart/clearcart")
-	public String clearCart(@AuthenticationPrincipal Principal principal){
+	public String clearCart(@AuthenticationPrincipal Principal principal,Model model){
 		List<CartItem> cartItems=cartItemDao.getCart(principal.getName());
 	for(CartItem cartItem:cartItems)
 			cartItemDao.removeCartItem(cartItem.getCartItemId());
+	  List<Productdetails> plist=productDao.getAllProductdetails();
+      List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+		
+		model.addAttribute("categories",clist);
+		model.addAttribute("products",plist);
 	return "redirect:/cart/getcart";
 	}
 	
@@ -98,6 +122,11 @@ private Productdao productDao;
 	     Customer customer= user.getCustomer();
 	     ShippingAddress shippingAddress=customer.getShippingaddress();
 	     model.addAttribute("shippingaddress",shippingAddress);
+	     List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 		return "Shippingaddress";
 	}
 	@RequestMapping(value="/cart/createorder")
@@ -141,6 +170,11 @@ private Productdao productDao;
 	
 		model.addAttribute("cartItems",cartItems);
 		model.addAttribute("customerorder",customerOrder);
+		  List<Productdetails> plist=productDao.getAllProductdetails();
+	        List<Categorydetails> clist=categoryDao.getAllCategorydetails();
+			
+			model.addAttribute("categories",clist);
+			model.addAttribute("products",plist);
 		return "orderdetails";	}
 
 }

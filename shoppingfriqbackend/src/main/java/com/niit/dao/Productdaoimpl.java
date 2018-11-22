@@ -40,6 +40,10 @@ public class Productdaoimpl implements Productdao{
         return (Productdetails) sessionFactory.getCurrentSession().get(
         		Productdetails.class, prodid);
     }
+    
+    public List<Productdetails> getproductbycat(int catid) {
+        return  sessionFactory.getCurrentSession().createQuery("from Productdetails where category.cid="+catid).list();
+    }
     @SuppressWarnings("unchecked")
 	@Override
     public List<Productdetails> getAllProductdetails() {

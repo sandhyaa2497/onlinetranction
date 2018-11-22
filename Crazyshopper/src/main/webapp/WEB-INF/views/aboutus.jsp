@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,21 +10,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<jsp:include page="header.jsp" /> 
-<div class="container">
- <c:url value='/admin/updatecategory' var="url"></c:url>
-<form:form action="${url}" modelAttribute="category" method="post">
-<form:hidden path="cid"></form:hidden>
-	   Enter Category Name
-			
-			<form:input path="categoryname" value="${categoryname}"/>
-			<form:errors path="categoryname" cssStyle="color:red"></form:errors>
-
-		<input type="submit" class="btn btn-warning" value="Edit Category"> 
-		
-
-</form:form>
-</div>
+<jsp:include page="header.jsp" />
+<c:url value='/aboutus' var="abt"></c:url>
+<form method = "POST" action = "${abt} "> 
+<h1><i>CRAZY SHOPPER</i></h1>
+<P>
+CrazyShopper online shopping app is a place where you any find trending products with 
+resonable prize..This app has been created to make the shopping easy.And the products will be delivered 
+with 2-3 days all around the world.We assure of the quantity of our product which as been approvide by the Indian government...So shop without any 
+dought...
+<h2>Keeping Shopping</h2>
+<h3><i>Thank you</i></h3>
+</form>
 
 </body>
 </html>

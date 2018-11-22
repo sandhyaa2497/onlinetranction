@@ -26,19 +26,19 @@
    
     <div class="carousel-inner">
       <div class="item active">
-        <img src="<c:url value='/resources/images/img2.jpg'></c:url>"  style="width:100%;">
+       <a href="<c:url value='/productlist'></c:url>" ><img src="<c:url value='/resources/images/img2.jpg'></c:url>"  style="width:100%;"></a>
       </div>
 
       <div class="item">
-        <img src="<c:url value='/resources/images/img.jpg'></c:url>" style="width:100%;">
+        <a href="<c:url value='/productlist'></c:url>" ><img src="<c:url value='/resources/images/img.jpg'></c:url>" style="width:100%;"></a>
       </div>
     
      <div class="item">
-        <img src="<c:url value='/resources/images/img3.jpg'></c:url>"  style="width:100%;">
+       <a href="<c:url value='/productlist'></c:url>" > <img src="<c:url value='/resources/images/img3.jpg'></c:url>"  style="width:100%;"></a>
       </div>
       
        <div class="item">
-        <img src="<c:url value='/resources/images/img1.jpg'></c:url>"  style="width:100%;">
+       <a href="<c:url value='/productlist'></c:url>" > <img src="<c:url value='/resources/images/img1.jpg'></c:url>"  style="width:100%;"></a>
       </div>
        
     </div>
@@ -58,6 +58,7 @@
 </div>
 <div class="container">
  <div class="row">
+ <h1>${prodcat}</h1>
  <c:forEach items="${products}" var="p">
     <div class="col-md-4"><img src="<c:url value='/resources/images/${p.prodid}.jpg'></c:url>" style="width:"100%;">
     <br/>
