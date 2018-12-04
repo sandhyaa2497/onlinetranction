@@ -2,6 +2,8 @@ package com.niit.dao;
 
 
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.Customer;
@@ -18,10 +20,13 @@ public interface CustomerDao {
 	boolean isEmailUnique(String email);
 
 
-	
-
+	 void updateCustomer(Customer customer);
 
 	Userdetails getUser(String email);
+
+
+
+	
 
 }
 

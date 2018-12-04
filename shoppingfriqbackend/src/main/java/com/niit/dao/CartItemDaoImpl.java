@@ -14,17 +14,23 @@ import com.niit.model.CustomerOrder;
 @Repository
 @Transactional
 public class CartItemDaoImpl implements CartItemDao {
+	
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
 		public void addToCart(CartItem cartItem) {
 			Session session=sessionFactory.getCurrentSession();
 			session.saveOrUpdate(cartItem);
 		}
+		
 		public void removeCartItem(int cartItemId) {
 			Session session=sessionFactory.getCurrentSession();
 			CartItem cartItem=(CartItem)session.get(CartItem.class,cartItemId);
 			session.delete(cartItem);
 		}
+		
 		@SuppressWarnings("unchecked")
 		public List<CartItem> getCart(String email) {
 			Session session=sessionFactory.getCurrentSession();
@@ -32,6 +38,7 @@ public class CartItemDaoImpl implements CartItemDao {
 			query.setString(0, email);
 			return query.list();
 		}
+		
 		public CustomerOrder createCustomerOrder(CustomerOrder customerOrder) {
 			Session session=sessionFactory.getCurrentSession();
 			session.save(customerOrder);

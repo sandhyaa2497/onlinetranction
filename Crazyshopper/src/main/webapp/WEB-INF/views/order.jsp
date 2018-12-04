@@ -13,47 +13,26 @@
 <body>
 <jsp:include page="header.jsp" /> 
 <div class="container">
-<c:if test="${ !empty(cartItems) }">
-<a href="<c:url value='/cart/clearcart'></c:url>" class="btn btn-danger" pull-left  >
-<span class="glyphicon glypicon-remove"></span>
-Clear Cart
-</a>
-
 <table class="table table-striped">
 <thead id="thead">
-<tr><th>ProductName</th><th>Quantity</th><th>Total Price</th><th>Remove</th>
+<tr><th>OrderId</th><th>Purchased Date</th><th>Grand Total</th><th>User Email</th>
 </tr>
 </thead>
 <c:set var="grandTotal" value="0"></c:set>
 <tbody id="tbody">
-<c:forEach items="${cartItems }" var="cartItem">
+<c:forEach items="${customerorders}" var="order">
 <tr>
-<td>${cartItem.product.prodname}</td>
-<td>${cartItem.quantity}</td>
-<td>${cartItem.totalPrice }</td>
-<c:set var="grandTotal" value="${grandTotal + cartItem.totalPrice }"></c:set>
+<td>${order.orderId}</td>
+<td>${order.purchaseDate}</td>
+<td>${order.grandTotal}</td>
 
-<td><a href="<c:url value='/cart/removecartitem/${cartItem.cartItemId }'></c:url>" class="label label-danger" pull-left >
-
-<span class="glyphicon glyphicon-remove" ></span>Remove
-</a></td>
-
+<td>${order.user.email}</td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
-Total Price : ${grandTotal }
-
-<a href="<c:url value='/cart/shippingaddressform'></c:url>" class="btn btn-success pull-right">
-<span class="glyphicon glyphicon-shopping-cart"></span> Place Order  </a>
-</c:if>
-
-<c:if test="${ empty cartItems}">
-<h3>Your Cart is Empty</h3>
-</c:if>
-
 <a href="<c:url value='/home'></c:url>"><button type="button" class="btn btn-primary">continue shopping</button></a>
-					
 </div>
+
 </body>
 </html>

@@ -18,6 +18,7 @@ private Date purchaseDate;
 private double grandTotal;
 @ManyToOne(cascade=CascadeType.ALL)
 private Userdetails user;
+
 public int getOrderId() {
 	return orderId;
 }
@@ -42,4 +43,5 @@ public Userdetails getUser() {
 public void setUser(Userdetails user) {
 	this.user = user;
 }
+
 }

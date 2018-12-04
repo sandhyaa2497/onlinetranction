@@ -53,8 +53,14 @@
 					</td></c:if>
 					<c:if test="${pageContext.request.userPrincipal.name != 'anu@gmail.com'}">
 					<c:if test="${pageContext.request.userPrincipal.name != null}">
+					
 <td>
+<c:if test="${j.quantity==0}">
+<a href="#"><button type="button" class="btn btn-primary">Out of stock</button></a>
+</c:if>
+<c:if test="${j.quantity!=0}">
 					<a href="<c:url value='/viewproduct-${j.prodid}'></c:url>"><button type="button" class="btn btn-primary">Add to cart</button></a>
+					</c:if>
 					</td></c:if></c:if>
 </tr>
 </c:forEach>

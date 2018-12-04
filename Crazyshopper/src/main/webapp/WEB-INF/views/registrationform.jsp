@@ -39,11 +39,11 @@ function fillShippingAddress(form){
 $(document).ready(function(){
 	$('#form').validate({
 		rules:{
-			firstname:{required:true},
-			lastname:{required:true},
-			phonenumber:{required:true,number:true,minlength:10,maxlength:10},
-			"user.email":{required:true,email:true},
-			"user.password":{required:true,minlength:5,maxlength:10},
+			firstname:{required:true}, <br/>
+			lastname:{required:true}, <br/>
+			phonenumber:{required:true,number:true,minlength:10,maxlength:10}, <br/>
+			"user.email":{required:true,email:true}, <br/>
+			"user.password":{required:true,minlength:5,maxlength:10}, <br/>
 			"billingaddress.apartmentnumber":{required:true},
 			"billingaddress.streetname":{required:true},
 			"billingaddress.state":{required:true},
@@ -66,7 +66,7 @@ $(document).ready(function(){
 <body>
 <jsp:include page="header.jsp" /> 
 <div class="container">
-	<c:url value="/registercustomer" var="url"></c:url>
+	<c:url value="/all/registercustomer" var="url"></c:url>
 	<form:form modelAttribute="customer" action="${url }" id="form">
 	
 	<form:hidden path="customerId"/>
@@ -135,7 +135,7 @@ Check this if shipping address is same as billing address
 	<form:label path="shippingaddress.zipcode">Enter zipcode</form:label>
 	<form:input path="shippingaddress.zipcode" id="shippingaddress.zipcode"/>
 	<br>
-	<input type="submit" value="Register" style="background-color:maroon;">
+	<input type="submit" value="Register" style="background-color:green;">
 	
 	</form:form>
 	</div>

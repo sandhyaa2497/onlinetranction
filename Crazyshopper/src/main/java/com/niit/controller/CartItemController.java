@@ -90,7 +90,7 @@ private Productdao productDao;
 		model.addAttribute("products",plist);
 	return "cart";
 	}
-	@RequestMapping(value="/cart/removecartitem")
+	@RequestMapping(value="/cart/removecartitem/{cartItemId}")
 	public String removeCartItem(@PathVariable int cartItemId,Model model){
 		cartItemDao.removeCartItem(cartItemId);
 		  List<Productdetails> plist=productDao.getAllProductdetails();
@@ -175,6 +175,7 @@ private Productdao productDao;
 			
 			model.addAttribute("categories",clist);
 			model.addAttribute("products",plist);
-		return "orderdetails";	}
+		return "orderdetails";	
+		}
 
 }

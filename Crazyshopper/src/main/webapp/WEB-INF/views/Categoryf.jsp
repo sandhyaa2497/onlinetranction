@@ -13,12 +13,14 @@
    <body>
    <jsp:include page="header.jsp" /> 
       <h2>CATEGORY DETAILS</h2>
-      <form:form method = "POST" action = "admin/addcategory" >
+      <c:url value='/admin/addcategory' var="url"></c:url>
+      <form:form method = "POST" action = "${url}">
+ 
         <form:label path = "categoryname">Name</form:label>
                <form:input path = "categoryname" />
                <form:errors path="categoryname" cssStyle="color:red"></form:errors>
             
-              
+               <input type = "submit" class="btn btn-warning" value = "Submit"/>
       </form:form>
    </body>
    
